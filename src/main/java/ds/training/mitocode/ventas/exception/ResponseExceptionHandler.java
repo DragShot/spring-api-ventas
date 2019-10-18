@@ -23,13 +23,13 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 	
 	@ExceptionHandler(ModelNotFoundException.class)
-	public final ResponseEntity<ExceptionResponse> handlerModelException(ModelNotFoundException ex, WebRequest request) {
+	public final ResponseEntity<ExceptionResponse> handleModelException(ModelNotFoundException ex, WebRequest request) {
 		ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(er, HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(ModelAlreadyExistsException.class)
-	public final ResponseEntity<ExceptionResponse> handlerModelException(ModelAlreadyExistsException ex, WebRequest request) {
+	public final ResponseEntity<ExceptionResponse> handleModelException(ModelAlreadyExistsException ex, WebRequest request) {
 		ExceptionResponse er = new ExceptionResponse(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(er, HttpStatus.CONFLICT);
 	}
